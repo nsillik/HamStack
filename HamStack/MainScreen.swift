@@ -34,14 +34,23 @@ struct MainScreen: View {
 
   var body: some View {
     NavigationSplitView {
-      List {
+      VStack(alignment: .leading) {
+        Text("")
         ForEach(Screen.allCases) { screen in
-          screen.title()
+          VStack {
+            HStack {
+              screen.title()
+              Spacer()
+            }
             .onTapGesture {
               self.selectedItem = screen
             }
-            .background((screen == selectedItem ? Color.orange : Color.clear).opacity(0.4))
+          }
+          .font(.title)
+          .padding()
+          .background((screen == selectedItem ? Color.orange : Color.clear).opacity(0.4))
         }
+        Spacer()
       }
     } detail: {
       selectedItem.detailView
