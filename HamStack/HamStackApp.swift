@@ -25,7 +25,7 @@ struct HamStackApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+          MainScreen()
         }
         .modelContainer(sharedModelContainer)
     }

@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct ContentView: View {
+struct MainScreen: View {
 
   @State private var selectedItem: Screen = Screen.allCases.first!
 
@@ -100,6 +100,6 @@ struct ContentView: View {
 }
 
 #Preview {
-  ContentView()
+  MainScreen()
     .modelContainer(for: Item.self, inMemory: true)
 }
