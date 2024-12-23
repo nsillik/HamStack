@@ -23,16 +23,24 @@ struct BandplanScreen: View {
 
   func bandplanCard(_ bandplan: Bandplan.BandPlanEntry) -> some View {
     HStack {
+      VStack {
+        bandplan.color.color()
+      }
+      .frame(width: 16, height: 16)
       VStack(alignment: .leading) {
-        Text(bandplan.name)
+        Text(bandplan.name.isEmpty ? "Unknown" : bandplan.name)
           .font(.title)
         Text("\(bandplan.minFrequency.converted(to: .megahertz).value)-\(bandplan.maxFrequency.converted(to: .megahertz).value) MHz")
           .font(.subheadline)
       }
       Spacer()
-      VStack {
-
+      VStack(alignment: .trailing) {
+        Spacer()
+        Text(bandplan.mode)
+          .fontWeight(.semibold)
+        Spacer()
       }
     }
+    .padding()
   }
 }
