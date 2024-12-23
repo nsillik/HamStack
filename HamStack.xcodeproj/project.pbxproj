@@ -88,10 +88,10 @@
 		C8B9369B2D19F01F00BA490D = {
 			isa = PBXGroup;
 			children = (
-				C8B936A62D19F01F00BA490D /* HamStack */,
 				C8B936BB2D19F02100BA490D /* HamStackTests */,
 				C8B936C52D19F02100BA490D /* HamStackUITests */,
 				C8B936A52D19F01F00BA490D /* Products */,
+				C8B936A62D19F01F00BA490D /* HamStack */,
 			);
 			sourceTree = "<group>";
 		};
