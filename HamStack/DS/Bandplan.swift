@@ -58,6 +58,18 @@ enum Bandplan {
   // Example usage
   static let csvURL = Bundle.main.url(forResource: "bandplan", withExtension: "csv")!
 
-  static var bandPlanEntries: [BandPlanEntry] = parseBandPlanCSV(from: try! String(contentsOf: csvURL))
+  static var bandPlanEntries: [BandPlanEntry] = parseBandPlanCSV(from: try! String(contentsOf: csvURL, encoding: .utf8))
 }
 
+extension Measurement<UnitFrequency> {
+  var display: String {
+    switch self.value {
+      case let value where value < 1000:
+      return "\(value) Hz"
+    case let value where value < 1000000:
+      return "\(value / 1000) kHz"
+    default:
+      return "\(value / 1000000) MHz"
+    }
+  }
+}

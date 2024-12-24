@@ -12,10 +12,9 @@ struct BandplanScreen: View {
 
   var body: some View {
     ScrollView {
-      LazyVStack {
+      LazyVStack(spacing: 0) {
         ForEach(bandplans) { bandplan in
           bandplanCard(bandplan)
-          Divider()
         }
       }
     }
@@ -26,21 +25,27 @@ struct BandplanScreen: View {
       VStack {
         bandplan.color.color()
       }
-      .frame(width: 16, height: 16)
-      VStack(alignment: .leading) {
-        Text(bandplan.name.isEmpty ? "Unknown" : bandplan.name)
-          .font(.title)
-        Text("\(bandplan.minFrequency.converted(to: .megahertz).value)-\(bandplan.maxFrequency.converted(to: .megahertz).value) MHz")
-          .font(.subheadline)
-      }
-      Spacer()
-      VStack(alignment: .trailing) {
+      .frame(minWidth: 16, maxWidth: 16, maxHeight: .infinity)
+      Group {
+        VStack(alignment: .leading) {
+          Text(bandplan.name.isEmpty ? "Unknown" : bandplan.name)
+            .font(.title)
+          Text("\(bandplan.minFrequency.display) – \(bandplan.maxFrequency.display)")
+            .font(.subheadline)
+        }
         Spacer()
-        Text(bandplan.mode)
-          .fontWeight(.semibold)
-        Spacer()
+        VStack(alignment: .trailing) {
+          Spacer()
+          Text(bandplan.mode)
+            .fontWeight(.semibold)
+          Spacer()
+        }
       }
+      .padding()
     }
-    .padding()
   }
+}
+
+#Preview {
+  BandplanScreen()
 }
